@@ -23,6 +23,9 @@
         <button onclick="openForm()" class="bg-green-500 text-white py-2 px-4 rounded-lg mb-4 inline-block hover:bg-green-600">
             Tambah Produk
         </button>
+        <a href="{{ route('products.export') }}" class="inline-block px-6 py-3 bg-blue-600 text-white font-semibold text-sm rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 mb-3">
+            Export ke Excel
+        </a>
     @endif
 
     <div class="overflow-x-auto bg-white shadow-md rounded-lg">

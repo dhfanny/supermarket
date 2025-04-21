@@ -66,7 +66,7 @@
         </div>
 
         <!-- Stock Chart -->
-        {{-- <div class="bg-white p-6 rounded-xl shadow border mt-6">
+        <div class="bg-white p-6 rounded-xl shadow border mt-6">
             <h3 class="text-lg font-semibold mb-4 text-gray-800">Stok Produk Saat Ini</h3>
             <div class="w-full overflow-x-auto">
                 <!-- Menyesuaikan ukuran canvas agar lebih kecil -->
@@ -75,7 +75,7 @@
             @if(empty($totalStokProduk))
                 <p class="text-sm text-gray-500 mt-2">Belum ada data stok produk untuk ditampilkan.</p>
             @endif
-        </div> --}}
+        </div>
     @endif
 </div>
 @endsection
@@ -174,54 +174,50 @@
         }
 
         // Stok Produk Chart
-    // const stokData = @json($totalStokProduk);
-    // if (stokData.length > 0) {
-    //     const stokLabels = stokData.map(item => item.nama_produk);
-    //     const stokValues = stokData.map(item => item.stok);
+    const stokData = @json($totalStokProduk);
+    if (stokData.length > 0) {
+        const stokLabels = stokData.map(item => item.nama_produk);
+        const stokValues = stokData.map(item => item.stok);
 
-    //     const ctxStok = document.getElementById('stockChart')?.getContext('2d');
-    //     if (ctxStok) {
-    //         new Chart(ctxStok, {
-    //             type: 'bar',
-    //             data: {
-    //                 labels: stokLabels,
-    //                 datasets: [{
-    //                     label: 'Stok Produk',
-    //                     data: stokValues,
-    //                     backgroundColor: 'rgba(34,197,94,0.3)',
-    //                     borderColor: 'rgba(34,197,94,1)',
-    //                     borderWidth: 1
-    //                 }]
-    //             },
-    //             options: {
-    //                 responsive: true,
-    //                 plugins: {
-    //                     legend: { display: false },
-    //                     tooltip: {
-    //                         callbacks: {
-    //                             label: function(context) {
-    //                                 return `Stok: ${context.parsed.y}`;
-    //                             }
-    //                         }
-    //                     }
-    //                 },
-    //                 scales: {
-    //                     y: {
-    //                         beginAtZero: true,
-    //                         ticks: {
-    //                             precision: 0,
-    //                             stepSize: 5, // Set step size to 5
-    //                             callback: function(value) {
-    //                                 // Display value as a multiple of 5
-    //                                 return value % 5 === 0 ? value : '';
-    //                             }
-    //                         }
-    //                     }
-    //                 }
-    //             }
-    //         });
-    //     }
-    // }
+        const ctxStok = document.getElementById('stockChart')?.getContext('2d');
+        if (ctxStok) {
+            new Chart(ctxStok, {
+                type: 'bar',
+                data: {
+                    labels: stokLabels,
+                    datasets: [{
+                        label: 'Stok Produk',
+                        data: stokValues,
+                        backgroundColor: 'rgba(34,197,94,0.3)',
+                        borderColor: 'rgba(34,197,94,1)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return `Stok: ${context.parsed.y}`;
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                precision: 0,
+                                stepSize: 2, // Set step size to 5
+                            }
+                        }
+                    }
+                }
+            });
+        }
+    }
     });
 </script>
 @endpush

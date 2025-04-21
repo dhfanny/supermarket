@@ -45,6 +45,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     // Update stok produk
     Route::get('products/{product}/stok', [ProductController::class, 'editstok'])->name('products.editstok');
     Route::put('products/{product}/stok', [ProductController::class, 'updatestok'])->name('products.updatestok');
+    Route::get('/produk/export', [ProductController::class, 'exportExcel'])->name('products.export');
 
     // Manajemen User
     Route::get('user', [UserController::class, 'index'])->name('user.index');
@@ -53,6 +54,8 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('user/{user}/edit', [UserController::class, 'edit'])->name('user.edit');
     Route::put('user/{user}', [UserController::class, 'update'])->name('user.update');
     Route::delete('user/{user}', [UserController::class, 'destroy'])->name('user.destroy');
+    Route::get('/user/export', [UserController::class, 'exportExcel'])->name('user.export');
+
 });
 
 // Route untuk role Petugas
