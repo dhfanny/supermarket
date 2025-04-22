@@ -66,7 +66,7 @@ class MemberController extends Controller
 
     public function addPoints(Member $member, int $total_price)
     {
-        $earned_points = floor($total_price * 0.1);
+        $earned_points = floor($total_price * 0.01);
         $member->increment('poin', $earned_points);
     }
 }

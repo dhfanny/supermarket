@@ -133,12 +133,12 @@
         <table>
             <tbody>
                 <tr>
-                    <td>Total Harga</td>
+                    <td>Total Bayar</td>
                     <td>Rp {{ number_format($purchase->total_price, 0, ',', '.') }}</td>
                 </tr>
                 <tr>
                     <td>Pembayaran</td>
-                    <td>Rp {{ number_format(session('total_payment'), 0, ',', '.') }}</td>
+                    <td>Rp {{ number_format($purchase->total_bayar, 0, ',', '.') }}</td>
                 </tr>
                 @if (session('change') > 0)
                 <tr class="total-row">
